@@ -12,19 +12,15 @@ app.get('/', function(req, res){
 
 app.use(express.static(__dirname + '/public'));
 
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
-  });
-});
+io.sockets.on('connection', function(socket) {
+	
+	// when the client emits 'sendchat', this listens and executes
+	socket.on('sendchat', function (data) {
+		console.log('sendchat: ' + socket.username + ': ' + data);
+		// we tell the client to execute 'updatechat' with 2 parameters
+		io.sockets.emit('updatechat', socket.username, data);
+	});
 
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    console.log('message: ' + msg);
-  });
-});
-
-io.on('connection', function(socket){
 	socket.on('adduser', function(username){
 		// we store the username in the socket session for this client
 		socket.username = username;
@@ -36,6 +32,16 @@ io.on('connection', function(socket){
 		socket.broadcast.emit('updatechat', 'SERVER', username + ' has connected');
 		// update the list of users in chat, client-side
 		io.sockets.emit('updateusers', usernames);
+	});
+
+	// when the user disconnects.. perform this
+	socket.on('disconnect', function(){
+		// remove the username from global usernames list
+		delete usernames[socket.username];
+		// update list of users in chat, client-side
+		io.sockets.emit('updateusers', usernames);
+		// echo globally that this client has left
+		socket.broadcast.emit('updatechat', 'SERVER', socket.username + ' has disconnected');
 	});
 });
 
