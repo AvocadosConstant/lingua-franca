@@ -1,17 +1,24 @@
 * { 
-	margin: 0; padding: 0; box-sizing: border-box; 
+	margin: 0; 
+	padding: 0; 
+	box-sizing: border-box; 
 }
 
 body { 
-	font-family: 'Open Sans'; !important
-	font: 13px Helvetica, Arial;
+	font-family: 'Open Sans';
+}
 
+.brand-logo {
+	font-family: 'Pacifico', cursive;
+}
+
+.card-container {
+	padding: 20px;
 }
 
 #chat-panel {
 	height: 100%;
 	position: relative;
-	border: 1px solid gray;
 	padding: 10px;
 }
 
@@ -21,8 +28,7 @@ body {
 
 form { 
 	background: #5d5d5d; 
-	padding: 3px; 
-	/*position: fixed; 	*/
+	padding: 3px;
 	bottom: 0; 
 	width: 100%;
 }
@@ -52,8 +58,12 @@ form input {
 	background: #fafafa; 
 }
 
+.server-message {
+	color: #888;
+	text-align: right;
+}
+
 #users-panel {
-	background: #eee;
 	padding: 10px;
 	height: 300px;
 }
