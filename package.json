@@ -1,9 +1,10 @@
 {
-  "name": "socket-chat-example",
+  "name": "lingua-franca",
   "version": "0.0.1",
-  "description": "my first socket.io app",
+  "description": "language immersive chat between natives and novices",
   "dependencies": {
     "express": "^4.10.2",
+    "mstranslator": "^2.0.2",
     "socket.io": "1.2.0"
   }
 }

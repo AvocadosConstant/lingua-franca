@@ -7,7 +7,7 @@ var io = require('socket.io')(http);
 var usernames = {};
 
 app.get('/', function(req, res){
-  res.sendFile(__dirname + '/public/index.html');
+	res.sendFile(__dirname + '/public/index.html');
 });
 
 app.use(express.static(__dirname + '/public'));
@@ -16,7 +16,7 @@ io.sockets.on('connection', function(socket) {
 	
 	// when the client emits 'sendchat', this listens and executes
 	socket.on('sendchat', function (data) {
-		console.log('sendchat: ' + socket.username + ': ' + data);
+		console.log('    Chat: ' + socket.username + ': ' + data);
 		// we tell the client to execute 'updatechat' with 2 parameters
 		io.sockets.emit('updatechat', socket.username, data);
 	});
@@ -31,6 +31,7 @@ io.sockets.on('connection', function(socket) {
 		// echo globally (all clients) that a person has connected
 		socket.broadcast.emit('updatechat', 'SERVER', username + ' has joined the channel.');
 		// update the list of users in chat, client-side
+		console.log('    > ' + username + ' has joined the channel.');
 		io.sockets.emit('updateusers', usernames);
 	});
 
@@ -42,10 +43,11 @@ io.sockets.on('connection', function(socket) {
 		io.sockets.emit('updateusers', usernames);
 		// echo globally that this client has left
 		socket.broadcast.emit('updatechat', 'SERVER', socket.username + ' has left the channel.');
+		console.log('    > ' + socket.username + ' has left the channel.');
 	});
 });
 
 
 http.listen(3000, function(){
-  console.log('Listening on *:3000');
+	console.log('Listening on *:3000');
 });
