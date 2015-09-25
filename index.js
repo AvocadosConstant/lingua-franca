@@ -15,6 +15,19 @@ var client = new MsTranslator({
     true
 );
 
+/*
+var params = {
+    text: 'How\'s it going?', 
+    from: 'en', 
+    to: 'es'
+};
+
+// Don't worry about access token, it will be auto-generated if needed.
+client.translate(params, function(err, data) {
+    console.log(data);
+});
+*/
+
 // usernames which are currently connected to the chat
 var usernames = {};
 
