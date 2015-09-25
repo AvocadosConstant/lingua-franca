@@ -2,6 +2,18 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var MsTranslator = require('mstranslator');
+
+var keys = require('./keys.js');
+
+// Second parameter to constructor (true) indicates that
+// the token should be auto-generated.
+var client = new MsTranslator({
+        client_id: keys.AZURE_CLIENT_ID, 
+        client_secret: keys.AZURE_CLIENT_SECRET
+    }, 
+    true
+);
 
 // usernames which are currently connected to the chat
 var usernames = {};

@@ -4,11 +4,12 @@ var chatTitles = [
     'Charlar un Poquito',
     'Discuter un Peu',
     'Chat ein Wenig',
-    'Chattare un Po'
+    'Chattare un Po',
+    'Ben is gay'
 ]
 
 socket.on('connect', function(){
-    $('#chat-title').text(chatTitles[Math.floor(Math.random() * (5))]);
+    $('#chat-title').text(chatTitles[Math.floor(Math.random() * (6))]);
     socket.emit('adduser', prompt("What's your name?"));
 });
 
