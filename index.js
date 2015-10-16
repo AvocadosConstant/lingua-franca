@@ -29,12 +29,14 @@ client.translate(params, function(err, data) {
 */
 
 // usernames which are currently connected to the chat
+
 var usernames = {};
 
 app.get('/', function(req, res){
 	res.sendFile(__dirname + '/public/index.html');
 });
 
+//Sets static directory for public
 app.use(express.static(__dirname + '/public'));
 
 io.sockets.on('connection', function(socket) {
