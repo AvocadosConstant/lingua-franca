@@ -26,14 +26,14 @@ body {
 	font-size: 32px;
 }
 
-form { 
+#m-box { 
 	background: #5d5d5d; 
 	padding: 3px;
 	bottom: 0; 
 	width: 100%;
 }
 
-form input { 
+#m { 
 	border: 0;
 	padding: 8px; 
 	width: 100%; 

@@ -39,8 +39,10 @@ socket.on('updateusers', function(data) {
 });
 
 //When message is sent
-$('#m').submit(function(){
-    socket.emit('sendchat', $('#m').val());
-    $('#m').val('');
-    return false;
+$('#m').keypress(function(e){
+    if(e.which==13) {
+        console.log('calling sendchat with message: ' + $('#m').val());
+        socket.emit('sendchat', $('#m').val());
+        $('#m').val('');
+    }
 });
