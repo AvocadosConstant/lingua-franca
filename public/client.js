@@ -10,7 +10,17 @@ var chatTitles = [
 //On connect
 socket.on('connect', function(){
     $('#chat-title').text(chatTitles[Math.floor(Math.random() * (5))]);
-    socket.emit('adduser', prompt("What's your name?"));
+    
+    var username = prompt("What's your name?");
+    var validName = true;
+    if(username == "" || username == null) validName = false;
+
+    while(!validName) {
+        var username = prompt("Please enter a valid name.");
+        if(username == "" || username == null) validName = false;
+        else validName = true;
+    }
+    socket.emit('adduser', username);
 });
 
 //Appends messages to chat
@@ -41,6 +51,7 @@ socket.on('updateusers', function(data) {
 //When message is sent
 $('#m').keypress(function(e){
     if(e.which==13) {
+        if($('#m').val() == "") return false;
         console.log('calling sendchat with message: ' + $('#m').val());
         socket.emit('sendchat', $('#m').val());
         $('#m').val('');
