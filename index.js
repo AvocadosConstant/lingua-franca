@@ -41,7 +41,6 @@ app.use(express.static(__dirname + '/public'));
 
 io.sockets.on('connection', function(socket) {
 	
-	// when the client emits 'sendchat', this listens and executes
 	socket.on('sendchat', function (data) {
 		console.log('    Chat: ' + socket.username + ': ' + data);
 		// we tell the client to execute 'updatechat' with 2 parameters

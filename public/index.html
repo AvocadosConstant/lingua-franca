@@ -1,45 +1,47 @@
 <!doctype html>
 <html>
-  <head>
+<head>
     <title>Lingua Franca</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
     <link href="main.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css" rel="stylesheet">
-  </head>
-  <body>
+</head>
+<body>
     <nav>
-      <div class="nav-wrapper yellow">
+        <div class="nav-wrapper yellow">
         <div class="container">
-          <a href="#" class="brand-logo grey-text text-darken-4">Lingua Franca</a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a class="grey-text text-darken-4" href="">Language</a></li>
-          </ul>
+            <a href="#" class="brand-logo grey-text text-darken-4">Lingua Franca</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a class="grey-text text-darken-4" href="">Language</a></li>
+            </ul>
         </div>
-      </div>
+        </div>
     </nav>
     <div class="container">
-      <div class="row" style="height:100%;">
-        <div class="card-container col s7">
-          <div id="chat-panel" class="card">
-            <b id="chat-title"></b>
-            <ul id="messages"></ul>
-            <div id="m-box">
-              <input id="m" autocomplete="off"/>
+        <div id="main-stuff">       
+            <div class="row" style="height:100%;">
+                <div class="card-container col s7">
+                    <div id="chat-panel" class="card">
+                        <b id="chat-title"></b>
+                        <ul id="messages"></ul>
+                        <div class="input-field" id="m-box">
+                            <textarea class="materialize-textarea" id="m" autocomplete="off" placeholder="Type a message..."></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container col s5">
+                    <div id="users-panel" class="card grey lighten-5">
+                    <div id="users-title">Usernames</div>
+                        <ul id="users"></ul>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-        <div class="card-container col s5">
-          <div id="users-panel" class="card grey lighten-5">
-            <div id="users-title">Usernames</div>
-            <ul id="users"></ul>
-          </div>
-        </div>
-      </div>
     </div>
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
     <script src="client.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
-  </body>
+</body>
 </html>
